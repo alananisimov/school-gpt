@@ -1,20 +1,13 @@
 import type { Config } from "drizzle-kit";
 
-const uri = [
-  "mysql://",
-  process.env.DB_USERNAME,
-  ":",
-  process.env.DB_PASSWORD,
-  "@",
-  process.env.DB_HOST,
-  ":3306/",
-  process.env.DB_NAME,
-  '?ssl={"rejectUnauthorized":true}',
-].join("");
+import { env } from "./src/env";
 
 export default {
   schema: "./src/schema",
-  driver: "mysql2",
-  dbCredentials: { uri },
-  tablesFilter: ["t3turbo_*"],
+  driver: "turso",
+  dbCredentials: {
+    url: env.DB_URL,
+    authToken: env.AUTH_TOKEN,
+  },
+  tablesFilter: ["school-gpt_*"],
 } satisfies Config;

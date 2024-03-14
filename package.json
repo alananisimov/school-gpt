@@ -32,5 +32,8 @@
     "apps/*",
     "packages/*",
     "tooling/*"
-  ]
+  ],
+  "dependencies": {
+    "ajv": "latest"
+  }
 }
